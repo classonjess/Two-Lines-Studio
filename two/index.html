@@ -54,7 +54,7 @@
         <span class="intro-word">Developer</span>
       </h2>
 
-      <p class="walk-tagline">Let's walk this journey together</p>
+      <p class="walk-tagline">Let's Walk This Journey Together</p>
 
       <div class="walking-strip" id="walking-strip">
         <div class="walk-frame"><img src="images/j.png" alt="J" /></div>
@@ -240,6 +240,47 @@
           <input type="email" id="email" name="email" placeholder="you@email.com" required />
         </div>
         
+        <div class="services-interested">
+          <h3>Services that you are interested in:</h3>
+          <div class="services-list">
+            <label class="service-checkbox">
+              <input type="checkbox" name="service" value="web-design" />
+              <span class="checkbox-box"></span>
+              <span>Web Design (UX/UI)</span>
+            </label>
+            <label class="service-checkbox">
+              <input type="checkbox" name="service" value="brand-identity" />
+              <span class="checkbox-box"></span>
+              <span>Brand Identity</span>
+            </label>
+            <label class="service-checkbox">
+              <input type="checkbox" name="service" value="social-banners" />
+              <span class="checkbox-box"></span>
+              <span>Social & Web Banners</span>
+            </label>
+            <label class="service-checkbox">
+              <input type="checkbox" name="service" value="email-signatures" />
+              <span class="checkbox-box"></span>
+              <span>Email Signatures</span>
+            </label>
+            <label class="service-checkbox">
+              <input type="checkbox" name="service" value="content-creation" />
+              <span class="checkbox-box"></span>
+              <span>Content Creation</span>
+            </label>
+            <label class="service-checkbox">
+              <input type="checkbox" name="service" value="presentations" />
+              <span class="checkbox-box"></span>
+              <span>Presentations</span>
+            </label>
+            <label class="service-checkbox">
+              <input type="checkbox" name="service" value="graphic-design" />
+              <span class="checkbox-box"></span>
+              <span>Graphic Design</span>
+            </label>
+          </div>
+        </div>
+        
         <div class="form-group">
           <label for="message">Message</label>
           <textarea id="message" name="message" placeholder="Tell me about your project..." required></textarea>
@@ -334,6 +375,9 @@
     const walkingObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
+          // Start light immediately, no delay
+          entry.target.classList.add('animate-light');
+          
           const frames = entry.target.querySelectorAll('.walk-frame');
           frames.forEach((frame, index) => {
             setTimeout(() => {
