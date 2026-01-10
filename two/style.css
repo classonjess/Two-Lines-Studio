@@ -141,13 +141,13 @@ nav.scrolled {
 .hero {
   min-height: 100vh;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   position: relative;
   /* allow the heading room to breathe and avoid descender clipping */
   overflow: visible;
   padding-top: 40px;
-  padding-bottom: 260px;
+  padding-bottom: 40px;
   background: transparent !important;
   border-bottom: 1px solid rgba(62, 167, 198, 0.08);
 }
