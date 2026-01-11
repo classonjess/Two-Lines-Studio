@@ -17,6 +17,12 @@
     <a href="#top" class="logo" aria-label="Two Lines Studio home">
       <img src="images/jesslogo.png" alt="Two Lines Studio" />
     </a>
+    <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+    <label for="menu-toggle" class="hamburger" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#process">Process</a></li>
@@ -27,7 +33,7 @@
   </nav>
 
 <section class="hero">
-   <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="./images/hero-poster.jpg">
+  <video id="hero-vid" class="hero-video" autoplay muted loop playsinline preload="metadata" poster="./images/hero-poster.jpg">
       <source src="./video/website-banner-720.mp4" type="video/mp4" />
     </video>
   
@@ -35,7 +41,7 @@
     <h1>Clarity. Design. Results.</h1>
     <p>Full-service design for websites, branding, and digital experiences that drive real impact.</p>
     <a href="#contact" class="cta-button">
-      Let's Create Something Great →
+      Let's Create Something Great
     </a>
   </div>
 </section>
@@ -54,7 +60,7 @@
         <span class="intro-word">Developer</span>
       </h2>
 
-      <p class="walk-tagline">Let's walk this journey together</p>
+      <p class="walk-tagline">Let's Walk This Journey Together</p>
 
       <div class="walking-strip" id="walking-strip">
         <div class="walk-frame"><img src="images/j.png" alt="J" /></div>
@@ -79,17 +85,14 @@
     <div class="about-content">
       <h2>About Me</h2>
       <p class="about-lead">
-        From websites to banners, business cards, email signatures, and presentations,
-        I design clean, modern visuals that feel professional and easy to understand.
+        I help small businesses and growing brands turn their websites and marketing into clear, conversion-focused systems.
       </p>
       
       <div class="skills stagger-children">
-        <span class="skill-tag">Web Design (UX/UI)</span>
+        <span class="skill-tag">Web Design</span>
         <span class="skill-tag">Brand Identity</span>
-        <span class="skill-tag">Social & Web Banners</span>
-        <span class="skill-tag">Email Signatures</span>
-        <span class="skill-tag">Presentations</span>
-        <span class="skill-tag">Full-Stack Development</span>
+        <span class="skill-tag">SEO & Performance</span>
+        <span class="skill-tag">Brand & Digital Assets</span>
       </div>
       
       <div class="stats stagger-children">
@@ -153,7 +156,7 @@
     </div>
     
     <div class="work-grid stagger-children">
-      <a href="https://www.mra-designs.com/" target="_blank" class="work-card">
+      <a href="https://www.mra-designs.com/" target="_blank" class="work-card mra-card">
         <div class="work-image">
           <img src="images/mra.png" alt="MRA Interior Design" />
         </div>
@@ -174,11 +177,13 @@
         </div>
         <div class="work-info">
           <h3>Integrity Medical Service</h3>
-          <p>Clear, trustworthy presentation for imaging equipment & services—built to look great and drive action.</p>
+          <p>Redesigned and optimized a multi-OEM medical imaging website to improve clarity, performance, and lead flow.</p>
           <div class="work-tags">
-            <span class="work-tag">Web Development</span>
-            <span class="work-tag">Product Design</span>
-            <span class="work-tag">Performance</span>
+            <span class="work-tag">Web Design & UX</span>
+            <span class="work-tag">Performance Optimization</span>
+            <span class="work-tag">Content Structure & Pages</span>
+            <span class="work-tag">Marketing & Social Assets</span>
+            <span class="work-tag">SEO</span>
           </div>
         </div>
       </a>
@@ -189,13 +194,13 @@
   <section class="services-cta-section" id="services">
     <div class="services-cta-container">
       <div class="services-cta-content">
-        <p class="services-eyebrow">NEED HELP WITH DESIGN?</p>
-        <h2 class="services-title">Websites, brand assets & conversion-minded visuals.</h2>
+        <p class="services-eyebrow">Need a design partner?</p>
+        <h2 class="services-title">Design support that scales with your business.</h2>
         
-        <a href="#contact" class="services-cta-btn">Work with Jess →</a>
+        <a href="#contact" class="services-cta-btn">Work with Jess</a>
         
         <ul class="services-list stagger-children">
-          <li>Website redesign & revamp</li>
+          <li>Website design & optimization</li>
           <li>Brand identity & logo creation</li>
           <li>Social & web banners</li>
           <li>Email signatures</li>
@@ -207,14 +212,13 @@
         <div class="laptop-mockup">
           <div class="laptop-screen">
             <div class="screen-content">
-              <p class="screen-eyebrow">NEED HELP WITH DESIGN?</p>
-              <h3 class="screen-title">Websites, brand assets & conversion-minded visuals.</h3>
+              <p class="screen-eyebrow">Need a design partner?</p>
+              <h3 class="screen-title">Design Support That Scales With Your Business.</h3>
               <ul class="screen-list">
-                <li>Website redesign & revamp</li>
-                <li>Brand identity & logo creation</li>
-                <li>Social & web banners</li>
-                <li>Email signatures</li>
-                <li>UX clean-ups & content blocks</li>
+                <li>Website Design & Optimization</li>
+                <li>Brand & Marketing Assets</li>
+                <li>UX & Content Improvements</li>
+                <li>Ongoing Design Support</li>
               </ul>
             </div>
           </div>
@@ -241,6 +245,36 @@
         </div>
         
         <div class="form-group">
+          <label class="interest-label">What are you interested in?</label>
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" name="services" value="website-design" />
+              Website Design & Redesign
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="services" value="website-development" />
+              Website Development
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="services" value="website-redesign" />
+              SEO & Performance Optimization
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="services" value="brand-identity" />
+              Brand Identity
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="services" value="digital-assets" />
+              Brand & Digital Assets (banners, email signatures, presentations)
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="services" value="not-sure" />
+              Not sure yet — let's talk
+            </label>
+          </div>
+        </div>
+        
+        <div class="form-group">
           <label for="message">Message</label>
           <textarea id="message" name="message" placeholder="Tell me about your project..." required></textarea>
         </div>
@@ -254,6 +288,11 @@
   <footer>
     <div class="footer-pill">
       <p>Stay fearless and have a <span class="rotating-word">fantastic</span> day.</p>
+    </div>
+    <div class="footer-links">
+      <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
+      <span class="sep">|</span>
+      <a href="terms.html" target="_blank" rel="noopener">Terms of Service</a>
     </div>
     <p class="footer-copyright">© <span id="year"></span> Two Lines Studio. All rights reserved.</p>
   </footer>
@@ -338,7 +377,7 @@
           frames.forEach((frame, index) => {
             setTimeout(() => {
               frame.classList.add('visible');
-            }, index * 150);
+            }, index * 300);
           });
           walkingObserver.unobserve(entry.target);
         }
@@ -378,6 +417,12 @@
     const video = document.getElementById('hero-vid');
     if (video) {
       console.log('✅ Video element found');
+      // make clip play slightly slower so it feels a little longer
+      try {
+        video.playbackRate = 0.90; // slower to extend the clip length
+      } catch (e) {
+        // ignore if not allowed
+      }
       video.load();
       video.play().then(() => {
         console.log('✅ Video is playing');

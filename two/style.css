@@ -65,6 +65,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   transition: all 0.3s ease;
+  overflow: hidden;
 }
 
 nav.scrolled {
@@ -72,6 +73,10 @@ nav.scrolled {
   backdrop-filter: none;
   border-bottom: 1px solid rgba(255,255,255,0.05);
   padding: 10px 40px;
+}
+
+.menu-toggle {
+  display: none;
 }
 
 .logo {
@@ -90,7 +95,71 @@ nav.scrolled {
 
 @media (max-width: 768px) {
   .logo img {
-    height: 28px;
+    height: 10px;
+  }
+  
+  nav {
+    padding: 16px 20px;
+  }
+  
+  .menu-toggle {
+    display: none;
+  }
+  
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+  }
+  
+  .hamburger span {
+    width: 24px;
+    height: 2.5px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  
+  .menu-toggle:checked ~ .hamburger span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+  }
+  
+  .menu-toggle:checked ~ .hamburger span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .menu-toggle:checked ~ .hamburger span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+  
+  .menu-toggle:checked ~ .nav-links {
+    max-height: 400px;
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: transparent;
+    padding: 20px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    align-items: flex-start;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  
+  .nav-links li {
+    width: 100%;
+    padding: 12px 0;
   }
 }
 
@@ -142,12 +211,21 @@ nav.scrolled {
   min-height: 100vh;
   display: flex;
   align-items: center;
+<<<<<<< HEAD
   justify-content: center;
   position: relative;
   /* allow the heading room to breathe and avoid descender clipping */
   overflow: visible;
   padding-top: 40px;
   padding-bottom: 40px;
+=======
+  justify-content: flex-start;
+  position: relative;
+  /* allow the heading room to breathe and avoid descender clipping */
+  overflow: visible;
+  padding-top: 0;
+  padding-bottom: 0;
+>>>>>>> 693ec18db12390e6bd5c8e27cc469cc06c77d5bd
   background: transparent !important;
   border-bottom: 1px solid rgba(62, 167, 198, 0.08);
 }
@@ -170,16 +248,19 @@ nav.scrolled {
   object-fit: cover;
   /* place video above the hero background but behind the content */
   z-index: 0;
-  filter: brightness(0.75);
-  opacity: 0.9;
+  /* brighter to make the light stand out more */
+  filter: brightness(0.88);
+  /* slightly more visible */
+  opacity: 0.95;
 }
 
 .hero-content {
-  text-align: center;
-  max-width: 1200px;
-  padding: 40px 40px;
+  text-align: left;
+  max-width: 800px;
+  padding: 40px 40px 40px 400px;
   z-index: 2;
   animation: fadeInUp 1s ease-out;
+  margin-right: auto;
 }
 
 @keyframes fadeInUp {
@@ -228,12 +309,12 @@ nav.scrolled {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 16px 32px;
+  padding: 12px 28px;
   background: transparent;
-  color: var(--text);
+  color: white;
   text-decoration: none;
-  border-radius: 100px;
-  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
   font-weight: 700;
   font-size: 16px;
   transition: all 0.3s ease;
@@ -362,12 +443,12 @@ nav.scrolled {
   left: 0;
   right: 0;
   height: 100%;
-  background: radial-gradient(ellipse 600px 200px at 50% 50%, 
-    rgba(255, 255, 255, 0.06) 0%, 
-    rgba(255, 255, 255, 0.03) 40%, 
-    transparent 70%
+  background: radial-gradient(ellipse 800px 260px at 50% 50%, 
+    rgba(255, 255, 255, 0.10) 0%, 
+    rgba(255, 255, 255, 0.05) 45%, 
+    transparent 75%
   );
-  animation: shadowMove 12s ease-in-out infinite;
+  animation: shadowMove 18s ease-in-out infinite;
   z-index: 0;
   pointer-events: none;
 }
@@ -375,15 +456,15 @@ nav.scrolled {
 @keyframes shadowMove {
   0% {
     transform: translateX(-80%);
-    opacity: 0.5;
+    opacity: 0.6;
   }
   50% {
     transform: translateX(30%);
-    opacity: 1;
+    opacity: 0.85;
   }
   100% {
     transform: translateX(-80%);
-    opacity: 0.5;
+    opacity: 0.6;
   }
 }
 
@@ -401,7 +482,7 @@ nav.scrolled {
 }
 
 .walk-frame.visible {
-  animation: slideLeft 0.8s ease-out forwards;
+  animation: slideLeft 1.6s ease-out forwards;
 }
 
 /* Sequential fade-in animation */
@@ -419,7 +500,8 @@ nav.scrolled {
   height: 240px;
   width: auto;
   display: block;
-  transition: filter 0.3s ease;
+  transition: filter 0.3s ease, transform 0.3s ease;
+  filter: brightness(1.12);
 }
 
 .walk-frame img:hover {
@@ -428,15 +510,15 @@ nav.scrolled {
 
 /* Sequential fade-in delays for all 10 images */
 .walk-frame:nth-child(1) { animation-delay: 0s; }
-.walk-frame:nth-child(2) { animation-delay: 0.15s; }
-.walk-frame:nth-child(3) { animation-delay: 0.30s; }
-.walk-frame:nth-child(4) { animation-delay: 0.45s; }
-.walk-frame:nth-child(5) { animation-delay: 0.60s; }
-.walk-frame:nth-child(6) { animation-delay: 0.75s; }
-.walk-frame:nth-child(7) { animation-delay: 0.90s; }
-.walk-frame:nth-child(8) { animation-delay: 1.05s; }
-.walk-frame:nth-child(9) { animation-delay: 1.20s; }
-.walk-frame:nth-child(10) { animation-delay: 1.35s; }
+.walk-frame:nth-child(2) { animation-delay: 0.30s; }
+.walk-frame:nth-child(3) { animation-delay: 0.60s; }
+.walk-frame:nth-child(4) { animation-delay: 0.90s; }
+.walk-frame:nth-child(5) { animation-delay: 1.20s; }
+.walk-frame:nth-child(6) { animation-delay: 1.50s; }
+.walk-frame:nth-child(7) { animation-delay: 1.80s; }
+.walk-frame:nth-child(8) { animation-delay: 2.10s; }
+.walk-frame:nth-child(9) { animation-delay: 2.40s; }
+.walk-frame:nth-child(10) { animation-delay: 2.70s; }
 
 /* ===== ABOUT SECTION ===== */
 .about-section {
@@ -527,7 +609,7 @@ nav.scrolled {
   font-size: 24px;
   font-weight: 700;
   margin-top: 0;
-  margin-bottom: 12px;
+  margin-bottom: 4px;
   color: var(--text);
 }
 
@@ -701,6 +783,16 @@ nav.scrolled {
   max-width: 70%;
   max-height: 70%;
   object-fit: contain;
+}
+
+/* Target only the MRA card to make its logo larger */
+.mra-card .work-image {
+  padding: 12px;
+}
+
+.mra-card .work-image img {
+  max-width: 95%;
+  max-height: 95%;
 }
 
 .work-info {
@@ -962,7 +1054,19 @@ nav.scrolled {
 
 @media (max-width: 768px) {
   .services-cta-section {
-    padding: 80px 24px;
+    padding: 80px 24px 40px 24px;
+    text-align: center;
+  }
+  
+  .services-cta-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-bottom: 0;
+  }
+  
+  .services-cta-content {
+    padding-right: 0;
+    margin-left: 0;
   }
   
   .services-title {
@@ -1031,6 +1135,10 @@ nav.scrolled {
   color: var(--accent);
 }
 
+.interest-label {
+  padding-bottom: 16px;
+}
+
 .form-group input,
 .form-group textarea {
   width: 100%;
@@ -1085,6 +1193,46 @@ nav.scrolled {
 .checkbox-item span {
   color: var(--text);
   margin-left: 12px;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0;
+  cursor: pointer;
+  font-size: 15px;
+  color: white !important;
+  line-height: 1.4;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.checkbox-label:hover {
+  color: var(--accent);
+}
+
+.checkbox-label input[type="checkbox"] {
+  cursor: pointer;
+  accent-color: var(--accent);
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin: 0;
+  margin-right: 20px;
+  transition: all 0.2s ease;
+  vertical-align: text-bottom;
+}
+
+.checkbox-label input[type="checkbox"]:hover {
+  transform: scale(1.1);
 }
 
 .submit-btn {
@@ -1246,6 +1394,28 @@ footer .footer-copyright {
   margin-bottom: 0px;
 }
 
+/* Footer policy links (simple inline style) */
+.footer-links {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.footer-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.footer-links .sep {
+  color: rgba(255,255,255,0.4);
+}
+
+@media (max-width: 520px) {
+  .footer-links a { font-size: 13px; }
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
   .walk-frame img {
@@ -1266,12 +1436,59 @@ footer .footer-copyright {
     padding: 10px 16px;
   }
   
+  .hero {
+    padding: 0 !important;
+    min-height: 100vh;
+    height: 100vh;
+    position: relative;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .hero::before {
+    display: none;
+  }
+
+  .hero-video {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: top;
+    z-index: 0;
+  }
+
+  .hero-content {
+    padding: 50px 20px 30px 20px;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+
   .hero h1 {
-    font-size: 48px;
+    font-size: 28px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+
+  .hero p {
+    font-size: 12px;
+    margin-bottom: 12px;
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  .cta-button {
+    padding: 6px 14px;
+    font-size: 10px;
   }
   
   .walking-container {
-    padding: 40px 24px;
+    padding: 40px 8px;
   }
   
   .walking-strip {
@@ -1297,6 +1514,19 @@ footer .footer-copyright {
   .stats {
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
+  }
+
+  .footer-pill {
+    padding: 16px 24px;
+    white-space: nowrap;
+  }
+
+  .footer-pill p {
+    font-size: 14px;
+  }
+
+  .intro-section {
+    margin-top: -500px;
   }
 }
 
@@ -1426,5 +1656,89 @@ footer .footer-copyright {
 
   .footer-copyright {
     text-align: center;
+  }
+}
+
+/* Policy page styles (improved typography and spacing) */
+.policy-page {
+  max-width: 880px;
+  margin: 64px auto;
+  padding: 36px 28px;
+  background: rgba(8,10,12,0.6);
+  border: 1px solid rgba(255,255,255,0.03);
+  border-radius: 12px;
+}
+
+.policy-header {
+  margin-bottom: 18px;
+}
+
+.policy-header .back-home {
+  display: inline-block;
+  color: var(--accent);
+  text-decoration: none;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.policy-header h1 {
+  font-size: clamp(22px, 3.6vw, 34px);
+  color: #ffffff;
+  margin: 6px 0 6px 0;
+  line-height: 1.15;
+}
+
+.last-updated {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.policy-page section {
+  margin: 18px 0;
+}
+
+.policy-page h2 {
+  color: #ffffff;
+  font-size: 18px;
+  margin-bottom: 8px;
+  border-bottom: 2px solid rgba(255,255,255,0.06);
+  padding-bottom: 8px;
+}
+
+.policy-page p {
+  color: rgba(255,255,255,0.92);
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+
+.policy-page ul {
+  margin-left: 20px;
+  list-style: disc;
+  color: rgba(255,255,255,0.92);
+}
+
+.policy-page li {
+  margin: 8px 0;
+}
+
+.policy-footer {
+  margin-top: 28px;
+}
+
+.policy-footer a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+@media (max-width: 520px) {
+  .policy-page {
+    margin: 24px 16px;
+    padding: 20px;
+  }
+  .policy-header h1 {
+    font-size: 20px;
   }
 }
