@@ -360,6 +360,15 @@
         return;
       }
 
+      // Skip animation on mobile
+      if (window.innerWidth <= 768) {
+        words.forEach(w => {
+          w.style.transform = 'none';
+          w.style.opacity = '1';
+        });
+        return;
+      }
+
       const START_POSES = [
         { x: -60, y: 40, r: -30 },
         { x: -30, y: 32, r: -18 },
@@ -379,7 +388,7 @@
         const start = vh * 1.0;
         const end = vh * 0.30;
 
-        let t = (start - rect.top) / (start - end);
+let t = (start - rect.top) / (start - end);
         if (t < 0) t = 0;
         if (t > 1) t = 1;
 

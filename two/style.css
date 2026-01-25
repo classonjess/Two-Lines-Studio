@@ -65,7 +65,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   transition: all 0.3s ease;
-  overflow: hidden;
+  overflow: visible;
 }
 
 nav.scrolled {
@@ -76,6 +76,12 @@ nav.scrolled {
 }
 
 .menu-toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hamburger {
   display: none;
 }
 
@@ -99,26 +105,32 @@ nav.scrolled {
   }
   
   nav {
-    padding: 16px 20px;
+    padding: 16px 20px !important;
+    overflow: visible !important;
   }
   
   .menu-toggle {
-    display: none;
+    position: absolute !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
   }
   
   .hamburger {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 5px;
+    display: flex !important;
+    flex-direction: column !important;
+    cursor: pointer !important;
+    gap: 5px !important;
+    z-index: 1000 !important;
+    position: relative !important;
   }
   
   .hamburger span {
-    width: 24px;
-    height: 2.5px;
-    background: var(--text);
-    border-radius: 2px;
-    transition: all 0.3s ease;
+    width: 24px !important;
+    height: 2.5px !important;
+    background: #ffffff !important;
+    border-radius: 2px !important;
+    transition: all 0.3s ease !important;
+    display: block !important;
   }
   
   .menu-toggle:checked ~ .hamburger span:nth-child(1) {
@@ -134,32 +146,41 @@ nav.scrolled {
   }
   
   .menu-toggle:checked ~ .nav-links {
-    max-height: 400px;
-    opacity: 1;
-    visibility: visible;
+    max-height: 400px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
   
   .nav-links {
-    position: absolute;
-    top: 70px;
-    left: 0;
-    right: 0;
-    flex-direction: column;
-    gap: 0;
-    background: transparent;
-    padding: 20px;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    visibility: hidden;
-    align-items: flex-start;
-    border-radius: 0;
-    box-shadow: none;
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    background: rgba(11, 17, 19, 0.98) !important;
+    backdrop-filter: blur(10px) !important;
+    padding: 20px !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    align-items: flex-start !important;
+    border-radius: 0 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+    border-top: 1px solid rgba(62, 167, 198, 0.2) !important;
+    z-index: 999 !important;
+    transition: max-height 0.3s ease, opacity 0.3s ease !important;
   }
   
   .nav-links li {
-    width: 100%;
-    padding: 12px 0;
+    width: 100% !important;
+    padding: 12px 0 !important;
+  }
+  
+  .nav-links li a {
+    color: #ffffff !important;
+    font-size: 18px !important;
   }
 }
 
@@ -1513,7 +1534,7 @@ footer .footer-copyright {
   }
 
   .hero-content {
-    padding: 50px 20px 30px 20px;
+    padding: 30px 20px 30px 20px !important;
     z-index: 2;
     position: absolute;
     top: calc(50% - 4px);
@@ -1525,21 +1546,22 @@ footer .footer-copyright {
   }
 
   .hero h1 {
-    font-size: 28px;
-    line-height: 1.2;
-    margin-bottom: 10px;
+    font-size: 24px !important;
+    line-height: 1.2 !important;
+    margin-bottom: 10px !important;
   }
 
   .hero p {
-    font-size: 12px;
-    margin-bottom: 12px;
-    padding-left: 0;
-    padding-right: 100px;
+    font-size: 12px !important;
+    margin-bottom: 12px !important;
+    padding-left: 0 !important;
+    padding-right: 160px !important;
   }
 
   .cta-button {
-    padding: 6px 14px;
-    font-size: 10px;
+    padding: 6px 10px 7px 10px !important;
+    font-size: 10px !important;
+    line-height: 1 !important;
   }
   
   .walking-container {
@@ -1578,7 +1600,7 @@ footer .footer-copyright {
   }
   
   .contact-section {
-    padding: 50px 20px !important;
+    padding: 50px 30px !important;
   }
   
   .stats {
@@ -1601,6 +1623,12 @@ footer .footer-copyright {
     padding-bottom: 20px;
     padding-left: 0;
     padding-right: 0;
+  }
+  
+  /* Remove animation on mobile - show words immediately */
+  .intro-word {
+    transform: none !important;
+    opacity: 1 !important;
   }
 }
 
