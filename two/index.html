@@ -414,10 +414,11 @@ let t = (start - rect.top) / (start - end);
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const frames = entry.target.querySelectorAll('.walk-frame');
+          const delayStep = window.innerWidth <= 768 ? 0 : 700;
           frames.forEach((frame, index) => {
             setTimeout(() => {
               frame.classList.add('visible');
-            }, index * 300);
+            }, index * delayStep);
           });
           walkingObserver.unobserve(entry.target);
         }
