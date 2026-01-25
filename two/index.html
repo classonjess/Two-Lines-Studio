@@ -3,7 +3,26 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Two Lines Studio — Design Studio</title>
+  <title>Two Lines Studio — Web Design & Development in Colorado | Jessica Classon</title>
+  <meta name="description" content="Two Lines Studio offers professional web design, development, SEO, and branding services for small businesses. Based in Colorado. MERN stack developer specializing in conversion-focused websites." />
+  <meta name="keywords" content="web design, web development, Colorado web designer, SEO, branding, MERN stack, small business websites, responsive design" />
+  <meta name="author" content="Jessica Classon" />
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="Two Lines Studio — Web Design & Development" />
+  <meta property="og:description" content="Full-service design for websites, branding, and digital experiences that drive real impact." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://twolinesstudio.com" />
+  <meta property="og:image" content="https://twolinesstudio.com/images/og-image.jpg" />
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Two Lines Studio — Web Design & Development" />
+  <meta name="twitter:description" content="Full-service design for websites, branding, and digital experiences that drive real impact." />
+  <meta name="twitter:image" content="https://twolinesstudio.com/images/og-image.jpg" />
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://twolinesstudio.com" />
   
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700&display=swap" />
@@ -76,41 +95,31 @@
     </div>
   </section>
 
- 
-
-
 
   <!-- About Section -->
   <section class="about-section" id="about">
     <div class="about-content">
       <h2>About Me</h2>
       <p class="about-lead">
-        I help small businesses and growing brands turn their websites and marketing into clear, conversion-focused systems.
+        I partner with small businesses and service-based brands to create clear, conversion-focused websites and digital assets. Every project is approached thoughtfully, from structure and UX to performance and long-term usability.
       </p>
       
       <div class="skills stagger-children">
         <span class="skill-tag">Web Design</span>
-        <span class="skill-tag">Brand Identity</span>
+        <span class="skill-tag">Development</span>
         <span class="skill-tag">SEO & Performance</span>
         <span class="skill-tag">Brand & Digital Assets</span>
       </div>
       
       <div class="stats stagger-children">
+
         <div class="stat">
-          <div class="stat-number">2</div>
-          <div class="stat-label">Websites Launched</div>
+          <div class="stat-number" style="margin-bottom: 0 !important; line-height: 1 !important;">MERN</div>
+          <div class="stat-label" style="margin-top: 0 !important; padding-top: 0 !important; line-height: 1.2 !important;">MIT xPRO Bootcamp</div>
         </div>
-        <div class="stat">
-          <div class="stat-number">10+</div>
-          <div class="stat-label">Design Projects</div>
-        </div>
-        <div class="stat">
-          <div class="stat-number">MERN</div>
-          <div class="stat-label">MIT xPRO Bootcamp</div>
-        </div>
-        <div class="stat">
-          <div class="stat-number">CO</div>
-          <div class="stat-label">Based in Colorado</div>
+        <div class="stat" style="gap: 0 !important;">
+          <div class="stat-number" style="margin-bottom: 0 !important; line-height: 1 !important;">CO</div>
+          <div class="stat-label" style="margin-top: 0 !important; padding-top: 0 !important; line-height: 1.2 !important;">Based in Colorado</div>
         </div>
       </div>
     </div>
@@ -126,8 +135,8 @@
     <div class="process-grid stagger-children">
       <article class="process-card">
         <div class="process-number">1</div>
-        <h3>Listen</h3>
-        <p>We start by understanding your goals, audience, and constraints - so every decision has purpose.</p>
+        <h3>Discover</h3>
+        <p>We start by discoveringyour goals, audience, and constraints - so every decision has purpose.</p>
       </article>
 
       <article class="process-card">
@@ -233,7 +242,7 @@
       <h2>Let's Work Together</h2>
       <p>Have a project in mind? Let's bring it to life.</p>
       
-      <form class="contact-form">
+      <form class="contact-form" action="https://formspree.io/f/xjkvkbjq" method="POST">
         <div class="form-group">
           <label for="name">Name</label>
           <input type="text" id="name" name="name" placeholder="Your name" required />
@@ -276,8 +285,10 @@
         
         <div class="form-group">
           <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="Tell me about your project..." required></textarea>
+          <textarea id="message" name="message" placeholder="Tell me about your project, goals, or timeline…" required></textarea>
         </div>
+        
+        <p class="response-time">I'll get back to you within 24-48 hours.</p>
         
         <button type="submit" class="submit-btn">Send Message</button>
       </form>
@@ -309,6 +320,26 @@
       } else {
         nav.classList.remove('scrolled');
       }
+      
+      // Update active nav link based on scroll position
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-links a');
+      
+      let currentSection = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionHeight = section.offsetHeight;
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+          currentSection = section.getAttribute('id');
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + currentSection) {
+          link.classList.add('active');
+        }
+      });
     });
 
     // Scroll-driven "Hi, I'm Jessica..." animation
@@ -392,11 +423,14 @@
       walkingObserver.observe(walkingStrip);
     }
 
-    // Form submission
+    // Form submission handled by Formspree
     document.querySelector('.contact-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('Thank you for your message! I\'ll get back to you soon.');
-      e.target.reset();
+      // Let Formspree handle the submission, just show a message
+      const form = e.target;
+      setTimeout(() => {
+        alert('Thank you for your message! I\'ll get back to you soon.');
+        form.reset();
+      }, 100);
     });
 
     // Rotating words in footer
