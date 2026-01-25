@@ -202,6 +202,18 @@ nav.scrolled {
   position: relative;
 }
 
+.nav-links a.contact-link {
+  padding: 6px 12px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 0;
+}
+
+.nav-links a.contact-link:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.85);
+}
+
 .nav-links a::after {
   content: '';
   position: absolute;
@@ -311,10 +323,10 @@ nav.scrolled {
   .hero h1 {
     font-size: clamp(32px, 7vw, 44px);
     line-height: 1.08;
+  }
 
   .contact-content p {
-    font-size: 19px !important;
-  }\n 
+    font-size: 18px !important;
   }
 }
 
@@ -418,6 +430,22 @@ nav.scrolled {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes fadeInSimple {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeftSimple {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
@@ -801,36 +829,47 @@ nav.scrolled {
 }
 
 .work-card {
-  background: var(--card-bg);
+  background: linear-gradient(160deg, rgba(18, 24, 30, 0.9) 0%, rgba(8, 12, 16, 0.8) 100%);
   border-radius: 24px;
   overflow: hidden;
-  border: 1px solid var(--card-border);
-  transition: transform 420ms cubic-bezier(.18,.9,.28,1), box-shadow 420ms ease, border-color 420ms ease;
+  border: 1px solid rgba(62, 167, 198, 0.12);
+  box-shadow: 0 18px 50px rgba(2, 8, 12, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  transition: transform 420ms cubic-bezier(.18,.9,.28,1), box-shadow 420ms ease, border-color 420ms ease, background 420ms ease;
   text-decoration: none;
   color: inherit;
   display: block;
+  position: relative;
 }
 
 .work-card:hover {
   transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 36px 100px rgba(2,8,12,0.66), 0 8px 30px rgba(62,167,198,0.04);
-  border-color: rgba(62,167,198,0.18);
+  box-shadow: 0 40px 110px rgba(2, 8, 12, 0.7), 0 12px 36px rgba(62, 167, 198, 0.08);
+  border-color: rgba(62, 167, 198, 0.28);
+  background: linear-gradient(160deg, rgba(20, 28, 36, 0.95) 0%, rgba(8, 12, 16, 0.85) 100%);
+}
+
+.work-card:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(62, 167, 198, 0.3), 0 18px 50px rgba(2, 8, 12, 0.45);
+  border-color: rgba(62, 167, 198, 0.4);
 }
 
 .work-image {
   width: 100%;
   height: 250px;
-  background: rgba(8,12,16,0.28);
+  background: radial-gradient(circle at 20% 20%, rgba(62, 167, 198, 0.12), rgba(8, 12, 16, 0.6) 60%);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 32px;
+  padding: 36px;
+  border-bottom: 1px solid rgba(62, 167, 198, 0.08);
 }
 
 .work-image img {
-  max-width: 70%;
-  max-height: 70%;
+  max-width: 76%;
+  max-height: 76%;
   object-fit: contain;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.55));
 }
 
 /* Target only the MRA card to make its logo larger */
@@ -844,13 +883,14 @@ nav.scrolled {
 }
 
 .work-info {
-  padding: 24px;
+  padding: 28px 28px 30px;
 }
 
 .work-info h3 {
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 12px;
+  letter-spacing: -0.01em;
 }
 
 .work-info p {
@@ -868,7 +908,8 @@ nav.scrolled {
 
 .work-tag {
   padding: 6px 14px;
-  background: rgba(62,167,198,0.08);
+  background: rgba(62, 167, 198, 0.12);
+  border: 1px solid rgba(62, 167, 198, 0.2);
   border-radius: 100px;
   font-size: 12px;
   font-weight: 600;
@@ -1134,6 +1175,7 @@ nav.scrolled {
   
   .services-title {
     font-size: 32px;
+    line-height: 1.35;
     margin-bottom: 18px !important;
   }
 
@@ -1191,11 +1233,15 @@ nav.scrolled {
   }
   
   .screen-content {
-    padding: 24px;
+    padding: 20px 20px 14px;
   }
   
   .screen-title {
     font-size: 16px;
+  }
+
+  .screen-list {
+    margin-bottom: 12px;
   }
   
   .screen-list li {
@@ -1203,6 +1249,7 @@ nav.scrolled {
     display: flex;
     align-items: center;
     padding-left: 0 !important;
+    padding-bottom: 2px !important;
     gap: 8px;
   }
   
@@ -1354,7 +1401,7 @@ nav.scrolled {
 }
 
 .response-time {
-  text-align: left !important;
+  text-align: center !important;
   color: var(--text-muted) !important;
   font-size: 11px !important;
   margin: 5px 0 11px 0 !important;
@@ -1608,7 +1655,7 @@ footer .footer-copyright {
   }
 
   .hero h1 {
-    font-size: 24px !important;
+    font-size: 23px !important;
     line-height: 1.2 !important;
     margin-bottom: 10px !important;
   }
@@ -1666,7 +1713,7 @@ footer .footer-copyright {
   }
   
   .walk-frame img {
-    height: 158px;
+    height: 190px;
   }
 
   .walk-frame {
@@ -1678,6 +1725,16 @@ footer .footer-copyright {
     opacity: 0;
     animation: walk-cycle 9s linear 0s 1 forwards;
     animation-timing-function: linear;
+  }
+
+  .walk-frame {
+    display: none;
+  }
+
+  .walk-frame:last-child {
+    display: block;
+    opacity: 1;
+    animation: fadeInSimple 0.9s ease-out 0.1s both;
   }
 
   .walk-frame.visible {
@@ -1739,6 +1796,12 @@ footer .footer-copyright {
     padding-bottom: 20px;
     padding-left: 0;
     padding-right: 0;
+  }
+
+  .intro-title {
+    font-size: clamp(36px, 7vw, 52px);
+    line-height: 1.25;
+    animation: slideInLeftSimple 0.8s ease-out 0.1s both;
   }
   
   /* Remove animation on mobile - show words immediately */
