@@ -1811,6 +1811,16 @@ footer .footer-copyright {
   }
 }
 
+@media (max-width: 400px) {
+  .hero-content {
+    padding: 26px 16px 26px 16px !important;
+  }
+
+  .hero p {
+    padding-right: 90px !important;
+  }
+}
+
 /* ===== FOOTER ===== */
 .footer {
   background: #0d1117 !important;
