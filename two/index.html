@@ -269,16 +269,16 @@
       <form class="contact-form" id="contact-form" action="https://formspree.io/f/xjkvkbjq" method="POST">
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="Your name" required />
+          <input type="text" id="name" name="name" autocomplete="name" placeholder="Your name" required />
         </div>
         
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="you@email.com" required />
+          <input type="email" id="email" name="email" autocomplete="email" placeholder="you@email.com" required />
         </div>
         
         <div class="form-group">
-          <label class="interest-label">What are you interested in?</label>
+          <p class="interest-label">What are you interested in?</p>
           <div class="checkbox-group">
             <label class="checkbox-label">
               <input type="checkbox" name="services" value="website-design" />
