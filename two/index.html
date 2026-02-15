@@ -232,33 +232,30 @@
     <div class="services-cta-container">
       <div class="services-cta-content">
         <p class="services-eyebrow">Need a design partner?</p>
-        <h2 class="services-title">Design support that scales with your business.</h2>
+        <h2 class="services-title">Design Support That Scales With Your Business.</h2>
         
         <a href="#contact" class="services-cta-btn">Work with Jess</a>
-        
-        <ul class="services-list stagger-children">
-          <li>Website design & optimization</li>
-          <li>Brand identity & logo creation</li>
-          <li>Social & web banners</li>
-          <li>Email signatures</li>
-          <li>UX clean-ups & content blocks</li>
-        </ul>
       </div>
       
       <div class="services-visual">
-        <div class="laptop-mockup">
-          <div class="laptop-screen">
-            <div class="screen-content">
-              <p class="screen-eyebrow">Need a design partner?</p>
-              <h3 class="screen-title">Design Support That Scales With Your Business.</h3>
-              <ul class="screen-list">
-                <li>Website Design & Optimization</li>
-                <li>Brand & Marketing Assets</li>
-                <li>UX & Content Improvements</li>
-                <li>Ongoing Design Support</li>
-              </ul>
-            </div>
-          </div>
+        <div class="services-cards" aria-label="Service highlights">
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">✦</div>
+            <h3>Conversion-Focused</h3>
+            <p>Pages designed for clarity, trust, and action so visitors are more likely to reach out.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">&lt;/&gt;</div>
+            <h3>Fast + Reliable</h3>
+            <p>Clean implementation, responsive behavior, and dependable support to keep momentum moving.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">◌</div>
+            <h3>Built to Scale</h3>
+            <p>A flexible design system and ongoing improvements that grow with your business.</p>
+          </article>
         </div>
       </div>
     </div>
@@ -350,6 +347,23 @@
 
     // Navbar scroll effect
     const nav = document.getElementById('nav');
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileNavLinks = document.querySelectorAll('.nav-links a');
+
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768 && menuToggle) {
+          menuToggle.checked = false;
+        }
+      });
+    });
+
+    window.addEventListener('hashchange', () => {
+      if (window.innerWidth <= 768 && menuToggle) {
+        menuToggle.checked = false;
+      }
+    });
+
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
         nav.classList.add('scrolled');
