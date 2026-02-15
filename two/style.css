@@ -122,8 +122,8 @@ nav.scrolled {
   background: transparent;
   backdrop-filter: none;
   border-bottom: 1px solid rgba(255,255,255,0.05);
-  padding: 10px 40px 46px 40px;
-  min-height: 98px;
+  padding: 10px 40px 18px 40px;
+  min-height: 72px;
 }
 
 .menu-toggle {
@@ -151,13 +151,23 @@ nav.scrolled {
 }
 
 @media (max-width: 768px) {
+  .logo {
+    padding-left: 12px;
+  }
+
   .logo img {
     height: 10px;
   }
   
   nav {
-    padding: 16px 20px 34px 20px !important;
+    padding: 14px 20px 14px 20px !important;
+    min-height: 72px !important;
     overflow: visible !important;
+  }
+
+  nav.scrolled {
+    padding: 10px 20px 10px 20px !important;
+    min-height: 60px !important;
   }
   
   .menu-toggle {
@@ -171,6 +181,7 @@ nav.scrolled {
     flex-direction: column !important;
     cursor: pointer !important;
     gap: 5px !important;
+    margin-right: 12px !important;
     z-index: 1000 !important;
     position: relative !important;
   }
@@ -197,16 +208,17 @@ nav.scrolled {
   }
   
   .menu-toggle:checked ~ .nav-links {
-    max-height: 400px !important;
+    max-height: 100vh !important;
     opacity: 1 !important;
     visibility: visible !important;
   }
   
   .nav-links {
-    position: absolute !important;
-    top: 100% !important;
+    position: fixed !important;
+    top: 0 !important;
     left: 0 !important;
     right: 0 !important;
+    bottom: 0 !important;
     flex-direction: column !important;
     gap: 0 !important;
     background: rgba(11, 17, 19, 0.98) !important;
@@ -761,16 +773,29 @@ nav.scrolled {
 @media (max-width: 520px) {
   .process-grid { 
     grid-template-columns: 1fr; 
-    gap: 16px; 
+    gap: 13px;
+    padding: 0 34px;
   }
   .process-card { 
     min-height: auto; 
-    padding: 32px 24px; 
+    padding: 24px 22px;
+    gap: 10px;
   }
   .process-number {
-    width: 64px;
-    height: 64px;
-    font-size: 20px;
+    width: 52px;
+    height: 52px;
+    font-size: 17px;
+    margin-bottom: 4px;
+  }
+
+  .process-card h3 {
+    font-size: 19px;
+    margin-bottom: 2px;
+  }
+
+  .process-card p {
+    font-size: 13px;
+    line-height: 1.45;
   }
 }
 
@@ -884,8 +909,8 @@ nav.scrolled {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
 }
 
 .work-card {
@@ -916,12 +941,12 @@ nav.scrolled {
 
 .work-image {
   width: 100%;
-  height: 250px;
+  height: 190px;
   background: radial-gradient(circle at 20% 20%, rgba(62, 167, 198, 0.12), rgba(8, 12, 16, 0.6) 60%);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 36px;
+  padding: 22px;
   border-bottom: 1px solid rgba(62, 167, 198, 0.08);
 }
 
@@ -943,21 +968,21 @@ nav.scrolled {
 }
 
 .work-info {
-  padding: 28px 28px 30px;
+  padding: 18px 18px 20px;
 }
 
 .work-info h3 {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   letter-spacing: -0.01em;
 }
 
 .work-info p {
-  font-size: 16px;
+  font-size: 14px;
   color: var(--text-muted);
   line-height: 1.6;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
 
 .work-tags {
@@ -1254,6 +1279,7 @@ nav.scrolled {
   }
   
   .work-image {
+    height: 165px;
     padding: 4px 4px 0px 12px !important;
     justify-content: flex-start !important;
   }
@@ -1671,8 +1697,16 @@ footer .footer-copyright {
 }
 
 @media (max-width: 768px) {
+  .intro-title,
+  .about-content h2,
+  .section-header h2,
+  .services-title,
+  .contact-content h2 {
+    font-size: 30px !important;
+  }
+
   nav {
-    padding: 16px 24px;
+    padding: 16px 24px 16px 32px;
   }
   .nav-links {
     gap: 20px;
@@ -1681,9 +1715,11 @@ footer .footer-copyright {
   
   .hero {
     padding: 0 !important;
-    min-height: 34vh;
-    height: 34vh;
+    min-height: 38vh;
+    height: 38vh;
     position: relative;
+    overflow: hidden;
+    border-radius: 18px;
     align-items: flex-start;
     justify-content: flex-start;
   }
@@ -1694,31 +1730,32 @@ footer .footer-copyright {
 
   .hero::after {
     display: block;
-    inset: 12px 4px;
-    border-radius: 16px;
+    inset: 12px;
+    border-radius: 18px;
     border: 1px solid rgba(62, 167, 198, 0.15);
     box-shadow: 0 0 0 1px rgba(62, 167, 198, 0.06);
   }
 
   .hero-video {
     position: absolute !important;
-    inset: 12px 4px !important;
-    width: calc(100% - 8px);
+    inset: 12px !important;
+    width: calc(100% - 24px);
     height: calc(100% - 24px);
-    border-radius: 16px;
+    border-radius: 18px;
     object-fit: contain;
-    object-position: center bottom;
+    object-position: center center;
     transform: none;
     z-index: 0;
   }
 
   .hero-content {
-    padding: 30px 20px 30px 20px !important;
+    padding: 20px 28px 20px 32px !important;
     margin-top: 0 !important;
     z-index: 2;
     position: absolute;
     top: calc(50% - 3px);
     transform: translateY(-50%);
+    animation: none !important;
     left: 0;
     right: 0;
     width: 100%;
@@ -1726,21 +1763,21 @@ footer .footer-copyright {
   }
 
   .hero h1 {
-    font-size: 23px !important;
-    line-height: 1.2 !important;
-    margin-bottom: 10px !important;
+    font-size: 19px !important;
+    line-height: 1.18 !important;
+    margin-bottom: 8px !important;
   }
 
   .hero p {
-    font-size: 12px !important;
-    margin-bottom: 12px !important;
+    font-size: 10.5px !important;
+    margin-bottom: 10px !important;
     padding-left: 0 !important;
-    padding-right: 160px !important;
+    padding-right: 185px !important;
   }
 
   .cta-button {
-    padding: 6px 10px 7px 10px !important;
-    font-size: 10px !important;
+    padding: 5px 8px 6px 8px !important;
+    font-size: 9px !important;
     line-height: 1 !important;
   }
   
@@ -1824,9 +1861,12 @@ footer .footer-copyright {
   .walk-frame:nth-child(9) { animation-delay: 8s; }
   .walk-frame:last-child { animation-name: walk-cycle-last; }
   
-  .about-content,
-  .work-info {
+  .about-content {
     padding: 32px 24px 40px 24px !important;
+  }
+
+  .work-info {
+    padding: 16px 14px 18px 14px !important;
   }
 
   .about-content {
@@ -1844,7 +1884,7 @@ footer .footer-copyright {
   }
   
   .contact-section {
-    padding: 50px 40px !important;
+    padding: 50px clamp(24px, 8vw, 56px) !important;
   }
   
   .stats {
@@ -1870,7 +1910,6 @@ footer .footer-copyright {
   }
 
   .intro-title {
-    font-size: clamp(36px, 7vw, 52px);
     line-height: 1.25;
     animation: slideInLeftSimple 0.8s ease-out 0.1s both;
   }
@@ -1888,7 +1927,7 @@ footer .footer-copyright {
   }
 
   .hero p {
-    padding-right: 90px !important;
+    padding-right: 145px !important;
   }
 }
 
@@ -2107,13 +2146,13 @@ footer .footer-copyright {
 
 @media (min-width: 769px) {
   #nav {
-    padding: 20px 40px 72px 40px !important;
-    min-height: 128px !important;
+    padding: 20px 40px 30px 40px !important;
+    min-height: 84px !important;
   }
 
   #nav.scrolled {
-    padding: 10px 40px 56px 40px !important;
-    min-height: 108px !important;
+    padding: 10px 40px 18px 40px !important;
+    min-height: 68px !important;
   }
 
   #main {
