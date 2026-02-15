@@ -75,7 +75,7 @@
   </nav>
 
 <section class="hero">
-  <video id="hero-vid" class="hero-video" autoplay muted loop playsinline preload="metadata" poster="./images/image4.png">
+  <video id="hero-vid" class="hero-video" autoplay muted defaultmuted loop playsinline webkit-playsinline preload="auto" poster="./images/image4.png" disablepictureinpicture>
       <source src="./video/website-banner-720.mp4" type="video/mp4" />
     </video>
   
@@ -559,20 +559,37 @@ let t = (start - rect.top) / (start - end);
     }
   </script>
   <script>
-  // Force video load and play
+  // Force video load and play (with iOS fallback)
   document.addEventListener('DOMContentLoaded', function() {
     const video = document.getElementById('hero-vid');
-    if (video) {
-      // make clip play slightly slower so it feels a little longer
-      try {
-        video.playbackRate = 0.90; // slower to extend the clip length
-      } catch (e) {
-        // ignore if not allowed
-      }
-      video.load();
-      video.play().catch(() => {
-      });
+    if (!video) return;
+
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+    video.setAttribute('autoplay', '');
+
+    try {
+      video.playbackRate = 0.90;
+    } catch (e) {
     }
+
+    const kickstartPlayback = () => {
+      video.play().then(() => {
+        document.removeEventListener('touchstart', kickstartPlayback);
+        document.removeEventListener('click', kickstartPlayback);
+      }).catch(() => {
+      });
+    };
+
+    video.load();
+    kickstartPlayback();
+
+    document.addEventListener('touchstart', kickstartPlayback, { passive: true, once: true });
+    document.addEventListener('click', kickstartPlayback, { once: true });
   });
 
   // Scroll animations - Intersection Observer

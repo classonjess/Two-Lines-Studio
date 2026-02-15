@@ -880,7 +880,7 @@ nav.scrolled {
   color: var(--accent);
   margin-bottom: 0 !important;
   margin-top: 0 !important;
-  padding-bottom: 0 !important;
+  padding-bottom: 8px !important;
   line-height: 1 !important;
 }
 
@@ -1516,6 +1516,7 @@ nav.scrolled {
 
   .response-time {
     text-align: center !important;
+    font-size: 9px !important;
     margin: -2px 0 2px 0 !important;
   }
 
