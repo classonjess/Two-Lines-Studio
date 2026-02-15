@@ -459,18 +459,47 @@ let t = (start - rect.top) / (start - end);
       requestAnimationFrame(update);
     })();
 
-    // Walking animation - trigger on scroll
+    // Walking animation - replay on each re-entry
+    function clearWalkTimers(strip) {
+      if (!strip || !Array.isArray(strip._walkTimers)) return;
+      strip._walkTimers.forEach(timerId => clearTimeout(timerId));
+      strip._walkTimers = [];
+    }
+
+    function resetWalkFrames(strip) {
+      if (!strip) return;
+      clearWalkTimers(strip);
+      strip.querySelectorAll('.walk-frame').forEach(frame => {
+        frame.classList.remove('visible');
+      });
+    }
+
+    function playWalkFrames(strip) {
+      if (!strip) return;
+
+      const frames = strip.querySelectorAll('.walk-frame');
+      const delayStep = window.innerWidth <= 768 ? 0 : 320;
+
+      resetWalkFrames(strip);
+      void strip.offsetWidth;
+
+      const timers = [];
+      frames.forEach((frame, index) => {
+        const timerId = setTimeout(() => {
+          frame.classList.add('visible');
+        }, index * delayStep);
+        timers.push(timerId);
+      });
+
+      strip._walkTimers = timers;
+    }
+
     const walkingObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const frames = entry.target.querySelectorAll('.walk-frame');
-          const delayStep = window.innerWidth <= 768 ? 0 : 700;
-          frames.forEach((frame, index) => {
-            setTimeout(() => {
-              frame.classList.add('visible');
-            }, index * delayStep);
-          });
-          walkingObserver.unobserve(entry.target);
+          playWalkFrames(entry.target);
+        } else {
+          resetWalkFrames(entry.target);
         }
       });
     }, {
@@ -579,10 +608,25 @@ let t = (start - rect.top) / (start - end);
   }, observerOptions);
 
   // Apply scroll animations to sections and cards
-  document.querySelectorAll(
-    '.about-section, .process-section, .work-section, .services-cta-section, .contact-section, .walking-strip, ' +
-    '.process-card, .work-card, .about-content, .skills, .stats'
-  ).forEach(el => {
+  const animationTargets = [
+    '.about-section',
+    '.process-section',
+    '.work-section',
+    '.services-cta-section',
+    '.contact-section',
+    '.walking-strip',
+    '.process-card',
+    '.work-card',
+    '.about-content',
+    '.skills',
+    '.stats'
+  ];
+
+  if (window.matchMedia('(max-width: 768px)').matches) {
+    animationTargets.push('.service-card');
+  }
+
+  document.querySelectorAll(animationTargets.join(', ')).forEach(el => {
     scrollObserver.observe(el);
   });
 
