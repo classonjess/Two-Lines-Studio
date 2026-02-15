@@ -81,7 +81,7 @@
     </video>
   
   <div class="hero-content">
-    <h1>Clarity. Design. Results.</h1>
+    <h1>Clarity. <span class="hero-accent">Design.</span> Results.</h1>
     <p>Full-service design for websites, branding, and digital experiences that drive real impact.</p>
     <a href="#contact" class="cta-button">
       Let's Create Something Great
@@ -326,7 +326,7 @@
   <!-- Footer -->
   <footer>
     <div class="footer-pill">
-      <p>Stay fearless and have a <span class="rotating-word">fantastic</span> day.</p>
+      <p>Stay fearless and have a <span class="rotating-word">fantastic</span> <span id="current-day">day</span>.</p>
     </div>
     <div class="footer-links">
       <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
@@ -340,6 +340,13 @@
   <script>
     // Set current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Set current weekday in footer
+    const currentDayElement = document.getElementById('current-day');
+    if (currentDayElement) {
+      const todayName = new Date().toLocaleDateString(undefined, { weekday: 'long' });
+      currentDayElement.textContent = todayName.toLowerCase();
+    }
 
     // Navbar scroll effect
     const nav = document.getElementById('nav');
