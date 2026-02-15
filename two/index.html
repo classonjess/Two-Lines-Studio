@@ -459,7 +459,7 @@ let t = (start - rect.top) / (start - end);
       requestAnimationFrame(update);
     })();
 
-    // Walking animation - replay on each re-entry
+    // Walking animation - play once
     function clearWalkTimers(strip) {
       if (!strip || !Array.isArray(strip._walkTimers)) return;
       strip._walkTimers.forEach(timerId => clearTimeout(timerId));
@@ -498,8 +498,7 @@ let t = (start - rect.top) / (start - end);
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           playWalkFrames(entry.target);
-        } else {
-          resetWalkFrames(entry.target);
+          walkingObserver.unobserve(entry.target);
         }
       });
     }, {
