@@ -1805,13 +1805,13 @@ footer .footer-copyright {
   }
 
   .hero h1 {
-    font-size: 19px !important;
+    font-size: 21px !important;
     line-height: 1.18 !important;
     margin-bottom: 8px !important;
   }
 
   .hero p {
-    font-size: 10.5px !important;
+    font-size: 12px !important;
     margin-bottom: 10px !important;
     padding-left: 0 !important;
     padding-right: 185px !important;
@@ -1846,7 +1846,7 @@ footer .footer-copyright {
 
   .walking-strip::before {
     animation: none !important;
-    opacity: 0.68;
+    opacity: 0.5;
     z-index: 0 !important;
     top: -24px !important;
     bottom: auto !important;
@@ -1856,9 +1856,9 @@ footer .footer-copyright {
     height: 310px !important;
     transform: translateX(-50%);
     background: radial-gradient(ellipse 160px 190px at 50% 52%,
-      rgba(206, 230, 255, 0.24) 0%,
-      rgba(150, 194, 248, 0.16) 34%,
-      rgba(90, 139, 209, 0.10) 62%,
+      rgba(206, 230, 255, 0.14) 0%,
+      rgba(150, 194, 248, 0.09) 34%,
+      rgba(90, 139, 209, 0.06) 62%,
       transparent 94%
     ) !important;
     filter: blur(12px);
@@ -1866,7 +1866,7 @@ footer .footer-copyright {
   
   .walk-frame img {
     height: 196px;
-    filter: brightness(1.24) contrast(1.08) saturate(1.05) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.36));
+    filter: brightness(1.1) contrast(1.05) saturate(1.02) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.36));
   }
 
   .walk-frame {
@@ -2058,11 +2058,11 @@ footer .footer-copyright {
   }
 
   .hero h1 {
-    font-size: 18px !important;
+    font-size: 19px !important;
   }
 
   .hero p {
-    font-size: 10px !important;
+    font-size: 11px !important;
     padding-right: 108px !important;
   }
 
