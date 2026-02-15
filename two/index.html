@@ -266,7 +266,7 @@
       <h2>Let's Work Together</h2>
       <p>Have a project in mind? Let's bring it to life.</p>
       
-      <form class="contact-form" id="contact-form" action="https://formspree.io/f/xjkvkbjq" method="POST">
+      <form class="contact-form" id="contact-form" action="https://formspree.io/f/xreaqvyn" method="POST">
         <div class="form-group">
           <label for="name">Name</label>
           <input type="text" id="name" name="name" autocomplete="name" placeholder="Your name" required />
@@ -511,6 +511,29 @@ let t = (start - rect.top) / (start - end);
       walkingObserver.observe(walkingStrip);
     }
 
+    const CONTACT_FALLBACK_EMAIL = 'hello@twolinesstudio.com';
+
+    function openMailFallback(formElement) {
+      const fallbackData = new FormData(formElement);
+      const name = (fallbackData.get('name') || '').toString().trim();
+      const email = (fallbackData.get('email') || '').toString().trim();
+      const message = (fallbackData.get('message') || '').toString().trim();
+      const services = fallbackData.getAll('services').map(item => item.toString().trim()).filter(Boolean);
+
+      const subject = `New inquiry from ${name || 'Website visitor'}`;
+      const bodyLines = [
+        `Name: ${name || 'Not provided'}`,
+        `Email: ${email || 'Not provided'}`,
+        `Services: ${services.length ? services.join(', ') : 'Not specified'}`,
+        '',
+        'Message:',
+        message || 'Not provided'
+      ];
+
+      const mailtoUrl = `mailto:${CONTACT_FALLBACK_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
+      window.location.href = mailtoUrl;
+    }
+
     const contactForm = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');
     if (contactForm && formStatus) {
@@ -531,14 +554,24 @@ let t = (start - rect.top) / (start - end);
             }
           });
 
+          const result = await response.json().catch(() => null);
+
           if (response.ok) {
             formStatus.textContent = "Thanks! Your message was sent successfully.";
             contactForm.reset();
           } else {
-            formStatus.textContent = 'Something went wrong. Please try again in a minute.';
+            const apiMessage = result?.errors?.[0]?.message || result?.error;
+            if (response.status === 404 && apiMessage === 'Form not found') {
+              formStatus.textContent = 'Contact form is not configured correctly. Opening your email app with your message now.';
+              openMailFallback(contactForm);
+            } else {
+              formStatus.textContent = apiMessage ? `${apiMessage} Opening your email app now.` : 'Something went wrong. Opening your email app now.';
+              openMailFallback(contactForm);
+            }
           }
         } catch (error) {
-          formStatus.textContent = 'Network error. Please check your connection and try again.';
+          formStatus.textContent = 'Network error. Opening your email app with your message now.';
+          openMailFallback(contactForm);
         } finally {
           if (submitButton) submitButton.disabled = false;
         }
