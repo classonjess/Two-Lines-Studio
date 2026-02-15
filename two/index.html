@@ -27,11 +27,35 @@
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" />
+  <!-- Favicon & webmanifest -->
+  <!-- PNG fallbacks (uploaded) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/jessfavicon32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/jessfavicon16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/jessfaviconAppleTouch.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0b1113">
+  <!-- JSON-LD Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Two Lines Studio",
+    "url": "https://twolinesstudio.com",
+    "logo": "https://twolinesstudio.com/images/jesslogo.png",
+    "sameAs": [
+      "https://www.linkedin.com/",
+      "https://www.instagram.com/"
+    ]
+  }
+  </script>
   <!-- Your CSS file -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <!-- Navigation -->
+  <main id="main" role="main">
   <nav id="nav">
     <a href="#top" class="logo" aria-label="Two Lines Studio home">
       <img src="images/jesslogo.png" alt="Two Lines Studio" />
@@ -66,7 +90,7 @@
 </section>
 
   <!-- Intro + Walking Animation (Unified Section) -->
-  <section class="intro-section">
+  <section class="intro-section" id="intro" role="region" aria-labelledby="intro-title" aria-describedby="intro-desc">
     <div class="intro-container">
       <h2 class="intro-title" id="intro-title">
         <span class="intro-word">Hi,</span>
@@ -79,18 +103,18 @@
         <span class="intro-word">Developer</span>
       </h2>
 
-      <p class="walk-tagline">Let's Walk This Journey Together</p>
+      <p id="intro-desc" class="walk-tagline">Let's Walk This Journey Together</p>
 
       <div class="walking-strip" id="walking-strip">
-        <div class="walk-frame"><img src="images/j.png" alt="J" /></div>
-        <div class="walk-frame"><img src="images/e.png" alt="E" /></div>
-        <div class="walk-frame"><img src="images/s.png" alt="S" /></div>
-        <div class="walk-frame"><img src="images/i.png" alt="I" /></div>
-        <div class="walk-frame"><img src="images/c.png" alt="C" /></div>
-        <div class="walk-frame"><img src="images/a.png" alt="A" /></div>
-        <div class="walk-frame"><img src="images/ee.png" alt="(" /></div>
-        <div class="walk-frame"><img src="images/cc.png" alt="(" /></div>
-        <div class="walk-frame"><img src="images/aa.png" alt="C" /></div>
+        <div class="walk-frame"><img src="images/j.png" alt="" aria-hidden="true" loading="lazy"/></div>
+        <div class="walk-frame"><img src="images/e.png" alt="" aria-hidden="true" loading="lazy"/></div>
+        <div class="walk-frame"><img src="images/s.png" alt="" aria-hidden="true" loading="lazy"/></div>
+        <div class="walk-frame"><img src="images/i.png" alt="" aria-hidden="true" loading="lazy"/></div>
+        <div class="walk-frame"><img src="images/c.png" alt="" aria-hidden="true" loading="lazy"/></div>
+        <div class="walk-frame"><img src="images/a.png" alt="" aria-hidden="true" loading="lazy"/></div>
+        <div class="walk-frame"><img src="images/ee.png" alt="" aria-hidden="true" loading="lazy"/></div>
+        <div class="walk-frame"><img src="images/cc.png" alt="" aria-hidden="true" loading="lazy"/></div>
+        <div class="walk-frame"><img src="images/aa.png" alt="" aria-hidden="true" loading="lazy"/></div>
       </div>
     </div>
   </section>
@@ -167,7 +191,9 @@
     <div class="work-grid stagger-children">
       <a href="https://www.mra-designs.com/" target="_blank" class="work-card mra-card">
         <div class="work-image">
-          <img src="images/mra.png" alt="MRA Interior Design" />
+          <!-- Example srcset: provide 1x and 2x variants when available -->
+          <!-- <img src="images/mra.png" srcset="images/mra.png 1x, images/mra@2x.png 2x" sizes="(max-width:600px) 100vw, 600px" alt="MRA Interior Design" loading="lazy" /> -->
+          <img src="images/mra.png" alt="MRA Interior Design" loading="lazy" />
         </div>
         <div class="work-info">
           <h3>MRA Interior Design</h3>
@@ -182,7 +208,9 @@
       
       <a href="https://integritymedicalservice.com/" target="_blank" class="work-card integrity-card">
         <div class="work-image">
-          <img src="images/integrity.png" alt="Integrity Medical Service" />
+          <!-- Example srcset: provide 1x and 2x variants when available -->
+          <!-- <img src="images/integrity.png" srcset="images/integrity.png 1x, images/integrity@2x.png 2x" sizes="(max-width:600px) 100vw, 600px" alt="Integrity Medical Service" loading="lazy" /> -->
+          <img src="images/integrity.png" alt="Integrity Medical Service" loading="lazy" />
         </div>
         <div class="work-info">
           <h3>Integrity Medical Service</h3>
@@ -307,6 +335,7 @@
     </div>
     <p class="footer-copyright">© <span id="year"></span> Two Lines Studio. All rights reserved.</p>
   </footer>
+  </main>
 
   <script>
     // Set current year in footer

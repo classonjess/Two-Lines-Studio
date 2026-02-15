@@ -1,0 +1,5 @@
+# robots.txt for Two Lines Studio
+User-agent: *
+Allow: /
+
+Sitemap: https://twolinesstudio.com/sitemap.xml

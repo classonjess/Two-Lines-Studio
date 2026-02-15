@@ -30,6 +30,40 @@ body {
   line-height: 1.6;
 }
 
+/* ===== Accessibility: Skip link and focus styles ===== */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  background: transparent;
+  color: transparent;
+}
+.skip-link:focus,
+.skip-link:active {
+  position: fixed;
+  left: 20px;
+  top: 18px;
+  width: auto;
+  height: auto;
+  padding: 8px 12px;
+  background: var(--accent);
+  color: var(--dark);
+  z-index: 9999;
+  border-radius: 6px;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+/* Visible focus styles for keyboard users */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 /* Apply a subtle background image on alternating sections to create flow.
    Uses a semi-opaque gradient overlay so content stays readable. */
 section.flow-bg {
@@ -242,21 +276,12 @@ nav.scrolled {
   min-height: 100vh;
   display: flex;
   align-items: center;
-<<<<<<< HEAD
-  justify-content: center;
-  position: relative;
-  /* allow the heading room to breathe and avoid descender clipping */
-  overflow: visible;
-  padding-top: 40px;
-  padding-bottom: 40px;
-=======
   justify-content: flex-start;
   position: relative;
   /* allow the heading room to breathe and avoid descender clipping */
   overflow: visible;
   padding-top: 0;
   padding-bottom: 0;
->>>>>>> 693ec18db12390e6bd5c8e27cc469cc06c77d5bd
   background: transparent !important;
   border-bottom: 1px solid rgba(62, 167, 198, 0.08);
 }
