@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Two Lines Studio — Web Design & Development in Colorado | Jessica Classon</title>
   <meta name="description" content="Two Lines Studio offers professional web design, development, SEO, and branding services for small businesses. Based in Colorado. MERN stack developer specializing in conversion-focused websites." />
-  <meta name="keywords" content="web design, web development, Colorado web designer, SEO, branding, MERN stack, small business websites, responsive design" />
   <meta name="author" content="Jessica Classon" />
   
   <!-- Open Graph / Social Media -->
@@ -13,16 +12,16 @@
   <meta property="og:description" content="Full-service design for websites, branding, and digital experiences that drive real impact." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://twolinesstudio.com" />
-  <meta property="og:image" content="https://twolinesstudio.com/images/og-image.jpg" />
+  <meta property="og:image" content="https://twolinesstudio.com/images/image4.png" />
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Two Lines Studio — Web Design & Development" />
   <meta name="twitter:description" content="Full-service design for websites, branding, and digital experiences that drive real impact." />
-  <meta name="twitter:image" content="https://twolinesstudio.com/images/og-image.jpg" />
+  <meta name="twitter:image" content="https://twolinesstudio.com/images/image4.png" />
   
   <!-- Canonical URL -->
-  <link rel="canonical" href="https://twolinesstudio.com" />
+  <link rel="canonical" href="https://twolinesstudio.com/" />
   
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700&display=swap" />
@@ -76,7 +75,7 @@
   </nav>
 
 <section class="hero">
-  <video id="hero-vid" class="hero-video" autoplay muted loop playsinline preload="metadata" poster="./images/hero-poster.jpg">
+  <video id="hero-vid" class="hero-video" autoplay muted loop playsinline preload="metadata" poster="./images/image4.png">
       <source src="./video/website-banner-720.mp4" type="video/mp4" />
     </video>
   
@@ -189,7 +188,7 @@
     </div>
     
     <div class="work-grid stagger-children">
-      <a href="https://www.mra-designs.com/" target="_blank" class="work-card mra-card">
+      <a href="https://www.mra-designs.com/" target="_blank" rel="noopener noreferrer" class="work-card mra-card">
         <div class="work-image">
           <!-- Example srcset: provide 1x and 2x variants when available -->
           <!-- <img src="images/mra.png" srcset="images/mra.png 1x, images/mra@2x.png 2x" sizes="(max-width:600px) 100vw, 600px" alt="MRA Interior Design" loading="lazy" /> -->
@@ -206,7 +205,7 @@
         </div>
       </a>
       
-      <a href="https://integritymedicalservice.com/" target="_blank" class="work-card integrity-card">
+      <a href="https://integritymedicalservice.com/" target="_blank" rel="noopener noreferrer" class="work-card integrity-card">
         <div class="work-image">
           <!-- Example srcset: provide 1x and 2x variants when available -->
           <!-- <img src="images/integrity.png" srcset="images/integrity.png 1x, images/integrity@2x.png 2x" sizes="(max-width:600px) 100vw, 600px" alt="Integrity Medical Service" loading="lazy" /> -->
@@ -267,7 +266,7 @@
       <h2>Let's Work Together</h2>
       <p>Have a project in mind? Let's bring it to life.</p>
       
-      <form class="contact-form" action="https://formspree.io/f/xjkvkbjq" method="POST">
+      <form class="contact-form" id="contact-form" action="https://formspree.io/f/xjkvkbjq" method="POST">
         <div class="form-group">
           <label for="name">Name</label>
           <input type="text" id="name" name="name" placeholder="Your name" required />
@@ -290,7 +289,7 @@
               Website Development
             </label>
             <label class="checkbox-label">
-              <input type="checkbox" name="services" value="website-redesign" />
+              <input type="checkbox" name="services" value="seo-performance-optimization" />
               SEO & Performance Optimization
             </label>
             <label class="checkbox-label">
@@ -303,7 +302,7 @@
             </label>
             <label class="checkbox-label">
               <input type="checkbox" name="services" value="not-sure" />
-              Not sure yet — let's talk
+              Not sure yet - let's talk
             </label>
           </div>
         </div>
@@ -314,6 +313,7 @@
         </div>
         
         <p class="response-time">I'll get back to you within 24-48 hours.</p>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
         
         <button type="submit" class="submit-btn">Send Message</button>
       </form>
@@ -326,9 +326,9 @@
       <p>Stay fearless and have a <span class="rotating-word">fantastic</span> <span id="current-day">day</span>.</p>
     </div>
     <div class="footer-links">
-      <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
+      <a href="privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
       <span class="sep">|</span>
-      <a href="terms.html" target="_blank" rel="noopener">Terms of Service</a>
+      <a href="terms.html" target="_blank" rel="noopener noreferrer">Terms of Service</a>
     </div>
     <p class="footer-copyright">© <span id="year"></span> Two Lines Studio. All rights reserved.</p>
   </footer>
@@ -483,15 +483,39 @@ let t = (start - rect.top) / (start - end);
       walkingObserver.observe(walkingStrip);
     }
 
-    // Form submission handled by Formspree
-    document.querySelector('.contact-form').addEventListener('submit', (e) => {
-      // Let Formspree handle the submission, just show a message
-      const form = e.target;
-      setTimeout(() => {
-        alert('Thank you for your message! I\'ll get back to you soon.');
-        form.reset();
-      }, 100);
-    });
+    const contactForm = document.getElementById('contact-form');
+    const formStatus = document.getElementById('form-status');
+    if (contactForm && formStatus) {
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const submitButton = contactForm.querySelector('.submit-btn');
+        const formData = new FormData(contactForm);
+
+        formStatus.textContent = 'Sending your message...';
+        if (submitButton) submitButton.disabled = true;
+
+        try {
+          const response = await fetch(contactForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+
+          if (response.ok) {
+            formStatus.textContent = "Thanks! Your message was sent successfully.";
+            contactForm.reset();
+          } else {
+            formStatus.textContent = 'Something went wrong. Please try again in a minute.';
+          }
+        } catch (error) {
+          formStatus.textContent = 'Network error. Please check your connection and try again.';
+        } finally {
+          if (submitButton) submitButton.disabled = false;
+        }
+      });
+    }
 
     // Rotating words in footer
     const rotatingWords = ['fantastic', 'amazing', 'wonderful', 'incredible', 'awesome', 'brilliant'];
@@ -510,7 +534,6 @@ let t = (start - rect.top) / (start - end);
   document.addEventListener('DOMContentLoaded', function() {
     const video = document.getElementById('hero-vid');
     if (video) {
-      console.log('✅ Video element found');
       // make clip play slightly slower so it feels a little longer
       try {
         video.playbackRate = 0.90; // slower to extend the clip length
@@ -518,13 +541,8 @@ let t = (start - rect.top) / (start - end);
         // ignore if not allowed
       }
       video.load();
-      video.play().then(() => {
-        console.log('✅ Video is playing');
-      }).catch(err => {
-        console.error('❌ Video error:', err);
+      video.play().catch(() => {
       });
-    } else {
-      console.error('❌ Video element not found');
     }
   });
 

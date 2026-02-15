@@ -1452,6 +1452,14 @@ nav.scrolled {
   margin: 5px 0 11px 0 !important;
 }
 
+.form-status {
+  text-align: center;
+  color: var(--text);
+  font-size: 14px;
+  min-height: 22px;
+  margin: 0;
+}
+
 @media (max-width: 768px) {
   .contact-content h2 {
     font-size: 40px !important;
@@ -1479,6 +1487,13 @@ nav.scrolled {
 .submit-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 12px 32px rgba(62,167,198,0.38);
+}
+
+.submit-btn:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 8px 24px rgba(62,167,198,0.20);
 }
 
 /* ===== SCROLL ANIMATIONS ===== */
@@ -1892,6 +1907,107 @@ footer .footer-copyright {
 
   .hero p {
     padding-right: 145px !important;
+  }
+}
+
+@media (max-width: 393px) {
+  :root {
+    --mobile-side-pad: 20px;
+    --mobile-work-copy-pad: 12px;
+  }
+
+  nav {
+    padding: 14px 18px 14px 18px !important;
+  }
+
+  .hero-content {
+    padding: 24px 20px !important;
+  }
+
+  .hero p {
+    padding-right: 130px !important;
+  }
+
+  .intro-section,
+  .about-section,
+  .process-section,
+  .work-section,
+  .services-cta-section,
+  .contact-section,
+  footer {
+    padding-left: var(--mobile-side-pad) !important;
+    padding-right: var(--mobile-side-pad) !important;
+  }
+
+  .work-section .section-header p {
+    padding-left: var(--mobile-work-copy-pad) !important;
+    padding-right: var(--mobile-work-copy-pad) !important;
+  }
+
+  .footer-pill {
+    padding: 14px 18px;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 375px) {
+  :root {
+    --mobile-side-pad: 16px;
+    --mobile-work-copy-pad: 8px;
+  }
+
+  nav {
+    padding: 12px 14px 12px 14px !important;
+  }
+
+  .nav-links {
+    padding: 16px 14px !important;
+  }
+
+  .nav-links li {
+    padding: 10px 0 !important;
+  }
+
+  .nav-links li a {
+    font-size: 17px !important;
+  }
+
+  .hero-content {
+    padding: 20px 16px !important;
+    max-width: 320px;
+  }
+
+  .hero h1 {
+    font-size: 18px !important;
+  }
+
+  .hero p {
+    font-size: 10px !important;
+    padding-right: 108px !important;
+  }
+}
+
+@media (max-width: 932px) and (orientation: landscape) {
+  nav {
+    padding-left: calc(14px + env(safe-area-inset-left)) !important;
+    padding-right: calc(14px + env(safe-area-inset-right)) !important;
+  }
+
+  .nav-links {
+    padding-left: calc(20px + env(safe-area-inset-left)) !important;
+    padding-right: calc(20px + env(safe-area-inset-right)) !important;
+  }
+
+  .hero-content,
+  .intro-section,
+  .about-section,
+  .process-section,
+  .work-section,
+  .services-cta-section,
+  .contact-section,
+  footer {
+    padding-left: calc(16px + env(safe-area-inset-left)) !important;
+    padding-right: calc(16px + env(safe-area-inset-right)) !important;
   }
 }
 
