@@ -340,7 +340,8 @@ nav.scrolled {
 .hero-content {
   text-align: left;
   max-width: 800px;
-  padding: 40px 40px 40px 130px;
+  padding: 0 40px 16px 130px;
+  margin-top: -56px;
   z-index: 2;
   animation: fadeInUp 1s ease-out;
   margin-right: auto;
@@ -371,7 +372,11 @@ nav.scrolled {
 }
 
 .hero h1 .hero-accent {
-  color: #132030;
+  color: #6dbce0;
+  opacity: 1 !important;
+  filter: none !important;
+  mix-blend-mode: normal;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.14);
 }
 
 /* Very small screens can still wrap to avoid overflow */
@@ -1676,8 +1681,8 @@ footer .footer-copyright {
   
   .hero {
     padding: 0 !important;
-    min-height: 27vh;
-    height: 27vh;
+    min-height: 34vh;
+    height: 34vh;
     position: relative;
     align-items: flex-start;
     justify-content: flex-start;
@@ -1689,7 +1694,7 @@ footer .footer-copyright {
 
   .hero::after {
     display: block;
-    inset: 8px 12px;
+    inset: 12px 4px;
     border-radius: 16px;
     border: 1px solid rgba(62, 167, 198, 0.15);
     box-shadow: 0 0 0 1px rgba(62, 167, 198, 0.06);
@@ -1697,16 +1702,19 @@ footer .footer-copyright {
 
   .hero-video {
     position: absolute !important;
-    inset: 40px !important;
-    width: calc(100% - 80px);
-    height: calc(100% - 80px);
+    inset: 12px 4px !important;
+    width: calc(100% - 8px);
+    height: calc(100% - 24px);
+    border-radius: 16px;
     object-fit: contain;
-    object-position: top;
+    object-position: center bottom;
+    transform: none;
     z-index: 0;
   }
 
   .hero-content {
     padding: 30px 20px 30px 20px !important;
+    margin-top: 0 !important;
     z-index: 2;
     position: absolute;
     top: calc(50% - 3px);
