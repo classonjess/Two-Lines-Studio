@@ -6,14 +6,14 @@
 }
 
 :root {
-  --dark: #0b1113;      /* primary background - deep charcoal */
-  --darker: #050809;    /* page edge - near black */
+  --dark: #151b23;      /* primary background - lightened charcoal */
+  --darker: #0f1419;    /* page edge - lightened near black */
   --accent: #3EA7C6;    /* teal-blue accent to match reference */
   --text: #e9f2f6;      /* primary text - soft off-white */
   --text-muted: #9aa7ad;/* muted text - cool grey */
   /* background image for flowing sections (keeps path relative to the site root) */
   --bg-image: url('images/background.png');
-  --card-bg: rgba(6,10,14,0.52);
+  --card-bg: rgba(15,20,28,0.52);
   --card-border: rgba(62,167,198,0.08);
 }
 
@@ -315,12 +315,19 @@ nav.scrolled {
   border-bottom: 1px solid rgba(62, 167, 198, 0.08);
 }
 
+/* Desktop: remove nav space and extend to top */
+@media (min-width: 1025px) {
+  .hero {
+    margin-top: -64px;
+  }
+}
+
 /* Dark overlay to improve text contrast over video */
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.40);
   z-index: 1;
   pointer-events: none;
 }
@@ -349,14 +356,23 @@ nav.scrolled {
   opacity: 0.98;
 }
 
+/* Desktop: expand video to edges */
+@media (min-width: 1025px) {
+  .hero-video {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+}
+
 .hero-content {
-  text-align: left;
-  max-width: 800px;
-  padding: 0 40px 16px 130px;
-  margin-top: -34px;
+  text-align: center;
+  max-width: 900px;
+  padding: 0 40px 16px 40px;
+  margin: -34px auto 0 auto;
   z-index: 2;
   animation: fadeInUp 1s ease-out;
-  margin-right: auto;
 }
 
 @keyframes fadeInUp {
@@ -378,7 +394,7 @@ nav.scrolled {
   font-weight: 800;
   /* significantly more space to avoid descender clipping */
   line-height: 1.3;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   letter-spacing: -0.04em;
   color: #ffffff;
 }
@@ -404,33 +420,39 @@ nav.scrolled {
 }
 
 .hero p {
-  font-size: 18px;
+  font-size: 20px;
   /* stronger contrast for readability over video */
   color: rgba(255, 255, 255, 0.98);
-  margin-bottom: 28px;
+  margin-bottom: 36px;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  padding: 0 30px;
 }
 
 .cta-button {
   display: inline-flex;
   align-items: center;
   gap: 0;
-  padding: 8px 18px;
-  background: transparent;
+  padding: 16px 48px;
+  background: linear-gradient(180deg, #45b8d6 0%, #3EA7C6 100%);
   color: white;
   text-decoration: none;
-  border-radius: 0;
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  border: 2px solid rgba(255, 255, 255, 0.25);
   font-weight: 700;
-  font-size: 16px;
-  transition: all 0.3s ease;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.4s ease;
+  box-shadow: 0 12px 28px rgba(62, 167, 198, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  position: relative;
 }
 
 .cta-button:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.85);
+  background: linear-gradient(180deg, #3d9fbb 0%, #2d8aa0 100%);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(62, 167, 198, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 /* ===== INTRO SECTION ===== */
@@ -486,7 +508,7 @@ nav.scrolled {
   font-size: 18px;
   font-weight: 600;
   color: var(--text-muted);
-  margin-bottom: 50px;
+  margin-bottom: 16px;
   margin-top: 20px;
   padding-top: 20px;
   letter-spacing: 0.02em;
@@ -558,6 +580,13 @@ nav.scrolled {
   overflow: visible;
   margin-top: 78px;
   padding: 0 20px;
+}
+
+/* Hide on desktop, show on mobile */
+@media (min-width: 1025px) {
+  .walking-strip {
+    display: none;
+  }
 }
 
 .walking-strip::before {
@@ -834,9 +863,19 @@ nav.scrolled {
   line-height: 1.8;
   color: var(--text-muted);
   margin-bottom: 40px;
+  margin-top: 0;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.about-founder {
+  font-size: 13.5px;
+  letter-spacing: 0.5px;
+  color: var(--accent);
+  font-weight: 600;
+  margin-top: 4px;
+  margin-bottom: 32px;
 }
 
 .skills {
