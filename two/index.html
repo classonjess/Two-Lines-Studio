@@ -41,17 +41,13 @@
     "@type": "Organization",
     "name": "Two Lines Studio",
     "url": "https://twolinesstudio.com",
-    "logo": "https://twolinesstudio.com/images/jesslogo.png",
-    "sameAs": [
-      "https://www.linkedin.com/",
-      "https://www.instagram.com/"
-    ]
+    "logo": "https://twolinesstudio.com/images/jesslogo.png"
   }
   </script>
   <!-- Your CSS file -->
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body id="top">
   <a class="skip-link" href="#main">Skip to content</a>
   <!-- Navigation -->
   <main id="main" role="main">
@@ -443,39 +439,80 @@
     ];
     
     let lastFortune = -1;
+
+    function triggerFortune() {
+      if (!fortuneBox || !fortuneDisplay || !popupFortuneText) return;
+
+      // Add shake animation
+      fortuneBox.classList.add('shaking');
+
+      // Get random fortune (avoid repeating the same one)
+      let randomIndex;
+      do {
+        randomIndex = Math.floor(Math.random() * fortunes.length);
+      } while (randomIndex === lastFortune && fortunes.length > 1);
+
+      lastFortune = randomIndex;
+
+      // Update popup text only
+      setTimeout(() => {
+        popupFortuneText.textContent = fortunes[randomIndex];
+      }, 300);
+
+      // Show the monitor display after shake completes
+      setTimeout(() => {
+        fortuneDisplay.classList.add('show');
+      }, 600);
+
+      // Remove shake animation
+      setTimeout(() => {
+        fortuneBox.classList.remove('shaking');
+      }, 600);
+
+      // Hide monitor after 4 seconds
+      setTimeout(() => {
+        fortuneDisplay.classList.remove('show');
+      }, 4600);
+    }
+
+    function isTypingTarget(target) {
+      if (!target) return false;
+      const tagName = target.tagName;
+      return target.isContentEditable || tagName === 'INPUT' || tagName === 'TEXTAREA' || tagName === 'SELECT';
+    }
+
+    function isElementMostlyInView(el) {
+      if (!el) return false;
+      const rect = el.getBoundingClientRect();
+      const viewHeight = window.innerHeight || document.documentElement.clientHeight;
+      return rect.bottom > viewHeight * 0.2 && rect.top < viewHeight * 0.8;
+    }
     
     if (fortuneSpacebar) {
-      fortuneSpacebar.addEventListener('click', () => {
-        // Add shake animation
-        fortuneBox.classList.add('shaking');
-        
-        // Get random fortune (avoid repeating the same one)
-        let randomIndex;
-        do {
-          randomIndex = Math.floor(Math.random() * fortunes.length);
-        } while (randomIndex === lastFortune && fortunes.length > 1);
-        
-        lastFortune = randomIndex;
-        
-        // Update popup text only
-        setTimeout(() => {
-          popupFortuneText.textContent = fortunes[randomIndex];
-        }, 300);
-        
-        // Show the monitor display after shake completes
-        setTimeout(() => {
-          fortuneDisplay.classList.add('show');
-        }, 600);
-        
-        // Remove shake animation
-        setTimeout(() => {
-          fortuneBox.classList.remove('shaking');
-        }, 600);
-        
-        // Hide monitor after 4 seconds
-        setTimeout(() => {
-          fortuneDisplay.classList.remove('show');
-        }, 4600);
+      fortuneSpacebar.setAttribute('role', 'button');
+      fortuneSpacebar.setAttribute('tabindex', '0');
+      fortuneSpacebar.setAttribute('aria-label', 'Reveal a random fortune');
+
+      fortuneSpacebar.addEventListener('click', triggerFortune);
+      fortuneSpacebar.addEventListener('keydown', (event) => {
+        if (event.code === 'Space' || event.code === 'Enter') {
+          event.preventDefault();
+          event.stopPropagation();
+          triggerFortune();
+        }
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.code !== 'Space') return;
+        if (event.metaKey || event.ctrlKey || event.altKey) return;
+        if (isTypingTarget(event.target)) return;
+        if (fortuneSpacebar.contains(event.target)) return;
+        if (!isElementMostlyInView(fortuneBox)) return;
+
+        // Prevent native space-page-scroll when using the fortune keyboard section.
+        event.preventDefault();
+        if (event.repeat) return;
+        triggerFortune();
       });
     }
 
