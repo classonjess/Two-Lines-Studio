@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Two Lines Studio — Web Design & Development in Colorado</title>
-  <meta name="description" content="Two Lines Studio offers professional web design, development, SEO, and branding services for small businesses. Based in Colorado. MERN stack developer specializing in conversion-focused websites." />
+  <title>Trigden Studio — Web Design & Development in Colorado</title>
+  <meta name="description" content="Trigden Studio offers professional web design, development, SEO, and branding services for small businesses. Based in Colorado. MERN stack developer specializing in conversion-focused websites." />
   <meta name="author" content="Jessica Classon" />
   
   <!-- Open Graph / Social Media -->
-  <meta property="og:title" content="Two Lines Studio — Web Design & Development" />
+  <meta property="og:title" content="Trigden Studio — Web Design & Development" />
   <meta property="og:description" content="Full-service design for websites, branding, and digital experiences that drive real impact." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://twolinesstudio.com" />
@@ -16,7 +16,7 @@
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Two Lines Studio — Web Design & Development" />
+  <meta name="twitter:title" content="Trigden Studio — Web Design & Development" />
   <meta name="twitter:description" content="Full-service design for websites, branding, and digital experiences that drive real impact." />
   <meta name="twitter:image" content="https://twolinesstudio.com/images/image4.png" />
   
@@ -28,9 +28,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" />
   <!-- Favicon & webmanifest -->
   <!-- PNG fallbacks (uploaded) -->
-  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/mobilefav.png">
   <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-180.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/mobilefav.png">
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="manifest" href="/site.webmanifest">
   <meta name="theme-color" content="#0b1113">
@@ -39,21 +39,38 @@
   {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Two Lines Studio",
+    "name": "Trigden Studio",
     "url": "https://twolinesstudio.com",
-    "logo": "https://twolinesstudio.com/images/jesslogo.png"
+    "logo": "https://twolinesstudio.com/images/trigdenlogo.png"
   }
   </script>
   <!-- Your CSS file -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body id="top">
+  <div id="entry-intro" class="entry-intro" aria-hidden="true">
+    <div class="entry-intro__geometry">
+      <span class="entry-intro__shape entry-intro__shape--one"></span>
+      <span class="entry-intro__shape entry-intro__shape--two"></span>
+      <span class="entry-intro__shape entry-intro__shape--three"></span>
+      <span class="entry-intro__shape entry-intro__shape--four"></span>
+      <span class="entry-intro__shape entry-intro__shape--five"></span>
+      <span class="entry-intro__shape entry-intro__shape--six"></span>
+      <span class="entry-intro__shape entry-intro__shape--seven"></span>
+      <span class="entry-intro__shape entry-intro__shape--eight"></span>
+      <span class="entry-intro__shape entry-intro__shape--nine"></span>
+    </div>
+    <div class="entry-intro__content">
+      <img class="entry-intro__logo" src="images/trigdenlogo.png" alt="Trigden Studio" />
+      <p class="entry-intro__caption">Entering the studio</p>
+    </div>
+  </div>
   <a class="skip-link" href="#main">Skip to content</a>
   <!-- Navigation -->
   <main id="main" role="main">
   <nav id="nav">
-    <a href="#top" class="logo" aria-label="Two Lines Studio home">
-      <img src="images/jesslogo.png" alt="Two Lines Studio" />
+    <a href="#top" class="logo" aria-label="Trigden Studio home">
+      <img src="images/trigdenlogo.png" alt="Trigden Studio" />
     </a>
     <input type="checkbox" id="menu-toggle" class="menu-toggle" />
     <label for="menu-toggle" class="hamburger" aria-label="Toggle menu">
@@ -89,8 +106,7 @@
   <section class="intro-section" id="intro" role="region" aria-labelledby="intro-title" aria-describedby="intro-desc">
     <div class="intro-container">
       <h2 class="intro-title" id="intro-title">
-        <span class="intro-word">Two</span>
-        <span class="intro-word">Lines</span>
+        <span class="intro-word">Trigden</span>
         <span class="intro-word">Studio</span>
       </h2>
 
@@ -266,7 +282,7 @@
           <!-- <img src="images/mra.png" srcset="images/mra.png 1x, images/mra@2x.png 2x" sizes="(max-width:600px) 100vw, 600px" alt="MRA Interior Design" loading="lazy" /> -->
           <img src="images/mra.png" alt="MRA Interior Design" loading="lazy" />
         </div>
-        <div class="work-info">
+        <div class="work-info" data-num="01">
           <h3>MRA Interior Design</h3>
           <p>Elegant, conversion-minded web visuals for a boutique interior design studio. Focused on clarity, hierarchy, and a premium feel.</p>
           <div class="work-tags">
@@ -283,7 +299,7 @@
           <!-- <img src="images/integrity.png" srcset="images/integrity.png 1x, images/integrity@2x.png 2x" sizes="(max-width:600px) 100vw, 600px" alt="Integrity Medical Service" loading="lazy" /> -->
           <img src="images/integrity.png" alt="Integrity Medical Service" loading="lazy" />
         </div>
-        <div class="work-info">
+        <div class="work-info" data-num="02">
           <h3>Integrity Medical Service</h3>
           <p>Redesigned and optimized a multi-OEM medical imaging website to improve clarity, performance, and lead flow.</p>
           <div class="work-tags">
@@ -305,7 +321,6 @@
         <p class="services-eyebrow">Need a design partner?</p>
         <h2 class="services-title">Design Support That Scales With Your Business.</h2>
         
-        <a href="#contact" class="services-cta-btn">Work with Two Lines Studio</a>
       </div>
       
       <div class="services-visual">
@@ -398,7 +413,7 @@
       <span class="sep">|</span>
       <a href="terms.html" target="_blank" rel="noopener noreferrer">Terms of Service</a>
     </div>
-    <p class="footer-copyright">© <span id="year"></span> Two Lines Studio. All rights reserved.</p>
+    <p class="footer-copyright">© <span id="year"></span> Trigden Studio. All rights reserved.</p>
   </footer>
   </main>
 
@@ -857,6 +872,32 @@ let t = (start - rect.top) / (start - end);
       el.style.backgroundPosition = `center ${scrolled * 0.5}px`;
     });
   });
+
+  // Entry intro sequence (4 logo pulses, then reveal website)
+  (function () {
+    const intro = document.getElementById('entry-intro');
+    if (!intro) return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function finishIntro() {
+      if (!intro || intro.classList.contains('is-exiting')) return;
+      intro.classList.add('is-exiting');
+      document.body.classList.remove('intro-active');
+
+      window.setTimeout(() => {
+        intro.remove();
+      }, 700);
+    }
+
+    if (reduceMotion) {
+      finishIntro();
+      return;
+    }
+
+    document.body.classList.add('intro-active');
+    window.setTimeout(finishIntro, 4300);
+  })();
 </script>
  </body>
 </html>

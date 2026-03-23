@@ -1,4 +1,4 @@
-# robots.txt for Two Lines Studio
+# robots.txt for Trigden Studio
 User-agent: *
 Allow: /
 
